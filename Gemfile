@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -33,8 +33,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.13.1'
 
+  gem 'faker', '~> 2.10', '>= 2.10.2'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop-rails', require: false
+end
+
+group :test do
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', '~> 0.21.2', require: false
 end
 
 group :development do

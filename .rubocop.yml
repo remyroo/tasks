@@ -1,0 +1,13 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+
+Style/Documentation:
+  Enabled: false
