@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TaskList from "./components/TaskList";
+import TaskApp from "../src/components/TaskApp";
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<TaskList />, document.getElementById("root"));
+  ReactDOM.render(<TaskApp />, document.getElementById("root"));
 });

@@ -1,6 +1,6 @@
 import React from "react";
 
-class TaskList extends React.Component {
+class TaskApp extends React.Component {
   render() {
     return (
       <div>
@@ -9,4 +9,4 @@ class TaskList extends React.Component {
     );
   }
 }
-export default TaskList;
+export default TaskApp;

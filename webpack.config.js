@@ -8,7 +8,7 @@ module.exports = {
   mode,
   devtool: "source-map",
   entry: {
-    application: "./app/javascript/packs/Index.jsx",
+    application: "./app/javascript/packs/index.jsx",
   },
   output: {
     filename: "[name].js",
