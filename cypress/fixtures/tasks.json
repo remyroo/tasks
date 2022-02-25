@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Read a book",
+    "description": "Ask a friend for a recommendation."
+  },
+  {
+    "id": 2,
+    "name": "Buy a guitar",
+    "description": "Preferrably a small Spanish guitar"
+  },
+  {
+    "id": 3,
+    "name": "Cook dinner",
+    "description": "Chilli oil noodles!"
+  }
+]

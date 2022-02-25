@@ -1,24 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import NotFound from "./NotFound";
 import TaskForm from "./TaskForm";
+import TaskHome from "./TaskHome";
 
-class TaskApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: [],
-    };
-  }
-
-  render() {
-    return (
-      <div className="content">
-        <Routes>
-          <Route path="/new" element={<TaskForm />} />
-        </Routes>
-      </div>
-    );
-  }
-}
+const TaskApp = () => {
+  return (
+    <div className="content">
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<TaskHome />} />
+        <Route path="/new" element={<TaskForm />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default TaskApp;
