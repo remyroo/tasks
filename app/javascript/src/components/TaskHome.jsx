@@ -3,8 +3,10 @@ import AddIcon from "@mui/icons-material/Add";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import TaskList from "./TaskList";
+import TaskStats from "./TaskStats";
 import {
   loadTasks,
   setAxiosHeaders,
@@ -13,6 +15,7 @@ import {
 
 const TaskHome = () => {
   const [tasks, setTasks] = useState(null);
+  const [stats, setStats] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,6 +23,7 @@ const TaskHome = () => {
     loadTasks()
       .then(({ data }) => {
         setTasks(data);
+        calculateStats(data);
         setIsLoading(false);
         setError(null);
       })
@@ -49,11 +53,25 @@ const TaskHome = () => {
           task.id === updatedTask.id ? updatedTask : task
         );
         setTasks(updatedTasks);
+        calculateStats(updatedTasks);
         setError(null);
       })
       .catch((err) => {
         setError(err.message);
       });
+  };
+
+  const calculateStats = (tasks) => {
+    if (tasks.length === 0) {
+      setStats(null);
+    } else {
+      const totalTasks = tasks.length;
+      const closedTasks = tasks.filter((task) => task.completed_at).length;
+      const openTasks = totalTasks - closedTasks;
+      const completionRate = Math.floor((closedTasks / totalTasks) * 100);
+
+      setStats({ closedTasks, openTasks, completionRate });
+    }
   };
 
   return (
@@ -76,7 +94,12 @@ const TaskHome = () => {
         {tasks && <TaskList tasks={tasks} handleCompleted={handleCompleted} />}
       </section>
 
-      <section data-cy="stats"></section>
+      {stats && (
+        <section data-cy="stats">
+          <Divider variant="fullWidth" />
+          <TaskStats stats={stats} />
+        </section>
+      )}
     </div>
   );
 };

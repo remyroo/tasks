@@ -8,6 +8,7 @@ describe("Task home page", () => {
         .and("contain", "add a task");
 
       cy.get("[data-cy='tasks']").should("not.be", "visible");
+      cy.get("[data-cy='stats']").should("not.be", "visible");
     });
 
     it("loads tasks on page load", () => {
@@ -15,6 +16,19 @@ describe("Task home page", () => {
 
       cy.get("[data-cy='alerts']").should("not.be", "visible");
       cy.get("[data-cy='task']").should("have.length", 3);
+    });
+
+    it("displays task stats", () => {
+      cy.seedAndVisitTasks();
+
+      cy.get("[data-cy='stats']").children().should("have.length", 2);
+
+      cy.get("[data-cy='stats']")
+        .children()
+        .first()
+        .should("have.class", "MuiDivider-root");
+
+      cy.get("[data-cy='stats']").children().last().should("contain", "Stats");
     });
 
     it("displays an error if tasks fail to load", () => {
@@ -32,6 +46,7 @@ describe("Task home page", () => {
         .and("contain", "Request failed with status code 500");
 
       cy.get("[data-cy='tasks']").should("not.be", "visible");
+      cy.get("[data-cy='stats']").should("not.be", "visible");
     });
 
     it("displays loading spinner when fetching data", () => {
