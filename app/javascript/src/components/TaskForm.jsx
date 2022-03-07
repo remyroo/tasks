@@ -79,7 +79,7 @@ const TaskForm = () => {
       <form id="task-form" onSubmit={handleSubmit}>
         <FormField
           variant="outlined"
-          color="secondary"
+          color="primary"
           fullWidth
           type="text"
           name="name"
@@ -91,7 +91,7 @@ const TaskForm = () => {
         />
         <FormField
           variant="outlined"
-          color="secondary"
+          color="primary"
           fullWidth
           type="text"
           name="description"
@@ -115,7 +115,7 @@ const TaskForm = () => {
             onChange={handleImage}
           />
           <IconButton
-            color="secondary"
+            color="primary"
             aria-label="upload-avatar"
             component="span"
           >
@@ -135,7 +135,7 @@ const TaskForm = () => {
               Adding...
             </Button>
           ) : (
-            <Button type="submit" variant="contained" color="secondary">
+            <Button type="submit" variant="contained" color="primary">
               Add
             </Button>
           )}

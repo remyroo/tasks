@@ -19,7 +19,7 @@ const TaskStats = ({ stats }) => {
             </Typography>
           </ListItemText>
           <ListItemText sx={{ marginLeft: 2 }}>
-            <Typography variant="h6" color="secondary">
+            <Typography variant="h6" color="primary">
               Total Tasks Closed
             </Typography>
           </ListItemText>
@@ -31,7 +31,7 @@ const TaskStats = ({ stats }) => {
             </Typography>
           </ListItemText>
           <ListItemText sx={{ marginLeft: 1 }}>
-            <Typography variant="h6" color="secondary">
+            <Typography variant="h6" color="primary">
               Total Tasks Open
             </Typography>
           </ListItemText>

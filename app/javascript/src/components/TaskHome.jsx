@@ -84,7 +84,7 @@ const TaskHome = () => {
           {isLoading && <CircularProgress color="primary" data-cy="spinner" />}
           {tasks?.length === 0 ? (
             <Typography>
-              Click the <AddIcon color="secondary" /> above to add a task
+              Click the <AddIcon color="primary" /> above to add a task
             </Typography>
           ) : null}
         </Box>
