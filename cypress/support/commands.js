@@ -20,3 +20,14 @@ Cypress.Commands.add("markTaskComplete", () => {
   });
   cy.get("[type='checkbox']").first().check();
 });
+
+Cypress.Commands.add("deleteTaskRequest", () => {
+  cy.server();
+  cy.route({
+    url: "/api/v1/tasks/1",
+    method: "DELETE",
+    status: 204,
+    response: {},
+  });
+  cy.get("[data-cy='delete']").first().click();
+});

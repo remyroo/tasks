@@ -43,4 +43,20 @@ describe("Task list", () => {
     });
   });
 
+  context("when a task is deleted", () => {
+    before(() => {
+      cy.seedAndVisitTasks();
+    });
+
+    it("removes it from the list", () => {
+      cy.get("[data-cy='task']").as("list");
+      cy.get("@list").should("have.length", 3).and("contain", "Read a book");
+
+      cy.deleteTaskRequest();
+
+      cy.get("@list")
+        .should("have.length", 2)
+        .and("not.contain", "Read a book");
+    });
+  });
 });

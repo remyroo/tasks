@@ -11,6 +11,7 @@ import {
   loadTasks,
   setAxiosHeaders,
   updateTask,
+  deleteTask,
 } from "../lib/utils/ApiHelpers";
 
 const TaskHome = () => {
@@ -61,6 +62,21 @@ const TaskHome = () => {
       });
   };
 
+  const handleDelete = (id) => {
+    setAxiosHeaders();
+
+    deleteTask(id)
+      .then(() => {
+        const updatedTasks = tasks.filter((task) => task.id !== id);
+        setTasks(updatedTasks);
+        calculateStats(updatedTasks);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   const calculateStats = (tasks) => {
     if (tasks.length === 0) {
       setStats(null);
@@ -91,7 +107,13 @@ const TaskHome = () => {
       </section>
 
       <section data-cy="tasks">
-        {tasks && <TaskList tasks={tasks} handleCompleted={handleCompleted} />}
+        {tasks && (
+          <TaskList
+            tasks={tasks}
+            handleCompleted={handleCompleted}
+            handleDelete={handleDelete}
+          />
+        )}
       </section>
 
       {stats && (

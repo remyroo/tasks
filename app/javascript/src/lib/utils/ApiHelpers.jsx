@@ -10,6 +10,9 @@ export const updateTask = (task) =>
     task: { completed_at: task.completed_at },
   });
 
+export const deleteTask = (id) =>
+  axios.delete(`http://localhost:3000/api/v1/tasks/${id}`);
+
 export const setAxiosHeaders = () => {
   const csrfToken = document.querySelector("[name=csrf-token]");
   if (!csrfToken) {

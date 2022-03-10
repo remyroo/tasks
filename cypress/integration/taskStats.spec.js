@@ -26,4 +26,24 @@ describe("Task stats", () => {
       cy.get("[data-cy='completionStat']").should("contain", "33%");
     });
   });
+
+  context("when a task is deleted", () => {
+    before(() => {
+      cy.seedAndVisitTasks();
+    });
+
+    it("updates the stats", () => {
+      cy.markTaskComplete();
+
+      cy.get("[data-cy='closedStat']").should("contain", 1);
+      cy.get("[data-cy='openStat']").should("contain", 2);
+      cy.get("[data-cy='completionStat']").should("contain", "33%");
+
+      cy.deleteTaskRequest();
+
+      cy.get("[data-cy='closedStat']").should("contain", 0);
+      cy.get("[data-cy='openStat']").should("contain", 2);
+      cy.get("[data-cy='completionStat']").should("contain", "0%");
+    });
+  });
 });

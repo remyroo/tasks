@@ -21,6 +21,9 @@ const TaskApp = () => {
             primary: {
               main: orange[900],
             },
+            secondary: {
+              main: grey[600],
+            },
             text: {
               primary: grey[300],
               secondary: grey[400],
@@ -34,6 +37,9 @@ const TaskApp = () => {
         : {
             primary: {
               main: orange[800],
+            },
+            secondary: {
+              main: grey[300],
             },
             text: {
               primary: grey[800],
